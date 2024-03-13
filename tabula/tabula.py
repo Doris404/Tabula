@@ -59,9 +59,12 @@ class Tabula:
         """
         # Load Model and Tokenizer from HuggingFace
         self.llm = llm
-        self.tokenizer = AutoTokenizer.from_pretrained(self.llm)
+        path = '/home/ruc/xiaotong/LLMDataGen/model/Tabula/distilgpt2'
+        # self.tokenizer = AutoTokenizer.from_pretrained(self.llm)
+        self.tokenizer= AutoTokenizer.from_pretrained(path)
         self.tokenizer.pad_token = self.tokenizer.eos_token
-        self.config = AutoConfig.from_pretrained(self.llm)
+        # self.config = AutoConfig.from_pretrained(self.llm)
+        self.config = AutoConfig.from_pretrained(path)
         self.model = AutoModelForCausalLM.from_config(self.config)
 
         # Set the training hyperparameters
